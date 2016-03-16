@@ -1,0 +1,27 @@
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        int one_cnt = 0,total=0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==1){
+                one_cnt++;
+            }
+            total+=nums[i];
+        }
+        int zero_cnt = nums.size()-one_cnt-(total-one_cnt)/2;
+        for(int i=0;i<nums.size();i++){
+            if(zero_cnt){
+                nums[i] = 0;
+                zero_cnt--;
+            }
+            else if(one_cnt){
+                nums[i] = 1;
+                one_cnt--;
+            }
+            else{
+                nums[i] = 2;
+            }
+            
+        }
+    }
+};
