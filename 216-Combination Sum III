@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<vector<int> > result;
+        vector<int> item;
+        dps(0,k,n,item,result);
+        return result;
+    }
+    //max: currently the max number in item
+    //k: only left "k" numbers for subtraction
+    //left: only left "left" counts for subtraction
+    void dps(int max,int k,int left,vector<int> &item,vector<vector<int>> &result){
+        if((left==0)&&(k==0)){
+            result.push_back(item);
+            return;
+        }
+        
+        for(int i=max+1;(i<=9)&&(i<=left);i++){
+            item.push_back(i);
+            dps(i,k-1,left-i,item,result);
+            item.pop_back();
+        }
+    }
+};
