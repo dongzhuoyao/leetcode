@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<vector<int>> combine(int n, int k) {
+        vector<vector<int>> result;
+        vector<int> item;
+        dps(1,k,n,item,result);
+        return result;
+    }
+    
+    void dps(int current,int left,int n,vector<int> &item,vector<vector<int>> &result){
+        if(left==0){
+            result.push_back(item);
+            return;
+        }
+        if(current>n)
+            return;
+        
+        
+        for(int i=current;i<=n;i++){
+            item.push_back(i);
+            dps(i+1,left-1,n,item,result);
+            item.pop_back();
+        }
+    }
+};
