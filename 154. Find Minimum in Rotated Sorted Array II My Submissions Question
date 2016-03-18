@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        int pre=nums[0];
+        for(int i=1;i<nums.size();i++){
+            if(nums[i]<pre)
+                return nums[i];
+            else{
+                pre = nums[i];
+            }
+        }
+        return nums[0];
+    }
+};
