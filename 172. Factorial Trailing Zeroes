@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int trailingZeroes(int n) {
+       /*
+       TLE
+       int result=0;
+        int x=5;
+        while(n>=x){
+            result+=n/x;
+            x = x*5;
+        }
+        return result;
+        */
+        int count_five = 0;  
+        while ( n > 0) {  
+            int k = n / 5;  
+            count_five += k;  
+            n = k;  
+        }  
+        return count_five;  
+    }
+};
