@@ -1,0 +1,36 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+private:
+    vector<TreeNode*> q;
+public:
+    void flatten(TreeNode* root) {
+        if(root==NULL)
+            return;
+        q.clear();
+        iot(root);
+        root = q[0];
+        TreeNode* tmp = root;
+        for(int i=1;i<q.size();i++){
+            //tmp->left==NULL is necessary!!!
+            tmp->left = NULL;
+            tmp->right = q[i];
+            tmp = q[i];
+        }
+    }
+    
+    void iot(TreeNode* root){
+        if(root==NULL)
+            return;
+        q.push_back(root);
+        iot(root->left);
+        iot(root->right);
+    }
+};
